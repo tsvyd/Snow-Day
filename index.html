@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Snow Day — Privacy Policy</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #eef4fb;
+      --surface: #ffffff;
+      --blue-deep: #1a3a5c;
+      --blue-mid: #2e6da4;
+      --blue-light: #a8c8e8;
+      --accent: #6db8e8;
+      --text: #1e2d3d;
+      --muted: #5a7a96;
+      --border: #c8dff0;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Snowfall canvas */
+    #snow-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.55;
+    }
+
+    /* Header */
+    header {
+      position: relative;
+      z-index: 10;
+      background: var(--blue-deep);
+      padding: 56px 40px 64px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 48px;
+      background: var(--bg);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+
+    .snowflake-icon {
+      display: inline-block;
+      font-size: 56px;
+      margin-bottom: 16px;
+      animation: spin 18s linear infinite;
+      filter: drop-shadow(0 0 16px rgba(109,184,232,0.7));
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    header p.subtitle {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: var(--blue-light);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+
+    /* Main content */
+    main {
+      position: relative;
+      z-index: 10;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .effective {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue-light);
+      color: var(--blue-deep);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 36px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 40px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 20px rgba(30,60,100,0.06);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 32px rgba(30,60,100,0.11);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .card-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--blue-mid));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      color: var(--blue-deep);
+      line-height: 1.2;
+    }
+
+    p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      list-style: none;
+      margin: 10px 0 12px 0;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 0.93rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    ul li::before {
+      content: '❄';
+      position: absolute;
+      left: 0;
+      top: 1px;
+      font-size: 10px;
+      color: var(--accent);
+    }
+
+    a {
+      color: var(--blue-mid);
+      text-decoration: none;
+      border-bottom: 1px solid var(--blue-light);
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* Contact card */
+    .contact-card {
+      background: linear-gradient(135deg, var(--blue-deep) 0%, #1e5080 100%);
+      border: none;
+      color: white;
+    }
+
+    .contact-card h2 { color: white; }
+    .contact-card p  { color: rgba(255,255,255,0.75); }
+    .contact-card a  { color: var(--accent); border-color: rgba(109,184,232,0.4); }
+    .contact-card a:hover { color: white; border-color: white; }
+
+    footer {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 24px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 600px) {
+      .card { padding: 24px 20px; }
+      header { padding: 40px 20px 52px; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="snow-canvas"></canvas>
+
+<header>
+  <div class="snowflake-icon">❄</div>
+  <h1>Snow Day</h1>
+  <p class="subtitle">Privacy Policy</p>
+</header>
+
+<main>
+  <div class="effective">
+    <span>❄</span> Effective: February 13, 2026
+  </div>
+
+  <!-- Intro -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">📄</div>
+      <h2>About This Policy</h2>
+    </div>
+    <p>This Privacy Policy applies to the <strong>Snow Day</strong> mobile application (the "Application"), created by the Developer (the "Service Provider") as a free service. By using the Application, you agree to the terms described below.</p>
+  </div>
+
+  <!-- Data Collection -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">📡</div>
+      <h2>Information Collection and Use</h2>
+    </div>
+    <p>The Application automatically collects certain information when you download and use it, including:</p>
+    <ul>
+      <li>Your device's Internet Protocol (IP) address</li>
+      <li>Pages visited within the Application, along with date and time of visits</li>
+      <li>Time spent within the Application</li>
+      <li>Operating system of your mobile device</li>
+    </ul>
+    <p>The Application does <strong>not</strong> collect precise location data from your mobile device.</p>
+    <p>The Service Provider may use the collected information to send you important notices, updates, and marketing promotions. Certain personally identifiable information may be requested for a better experience and will be retained as described in this policy.</p>
+  </div>
+
+  <!-- Third Party -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">🔗</div>
+      <h2>Third Party Access</h2>
+    </div>
+    <p>Only aggregated, anonymized data is periodically shared with external services to help improve the Application. Your information may also be disclosed:</p>
+    <ul>
+      <li>As required by law (e.g., to comply with a subpoena or legal process)</li>
+      <li>In good faith when necessary to protect rights, safety, or to investigate fraud</li>
+      <li>With trusted service providers who act on the Service Provider's behalf and adhere to this policy</li>
+    </ul>
+  </div>
+
+  <!-- Opt-Out -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">🚪</div>
+      <h2>Opt-Out Rights</h2>
+    </div>
+    <p>You can stop all data collection by the Application by uninstalling it. Use the standard uninstall process available on your mobile device or through your app marketplace.</p>
+  </div>
+
+  <!-- Retention -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">🗂️</div>
+      <h2>Data Retention Policy</h2>
+    </div>
+    <p>User-provided data is retained for as long as you use the Application, and for a reasonable period thereafter. To request deletion of your data, contact the Service Provider at <a href="mailto:Fire21Lavas8@gmail.com">Fire21Lavas8@gmail.com</a>.</p>
+  </div>
+
+  <!-- Children -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">🧒</div>
+      <h2>Children's Privacy</h2>
+    </div>
+    <p>The Service Provider does not knowingly solicit data from or market to children under the age of 13. Parents and legal guardians are encouraged to monitor their children's Internet usage and help enforce this Policy.</p>
+    <p>If you believe a child has provided personal information through the Application, please contact us at <a href="mailto:Fire21Lavas8@gmail.com">Fire21Lavas8@gmail.com</a> so appropriate action can be taken.</p>
+    <p>You must be at least <strong>16 years of age</strong> to consent to the processing of your personal data (in some countries a parent or guardian may consent on your behalf).</p>
+  </div>
+
+  <!-- Security -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">🔒</div>
+      <h2>Security</h2>
+    </div>
+    <p>The Service Provider is committed to protecting the confidentiality of your information and provides physical, electronic, and procedural safeguards to protect the data it processes and maintains.</p>
+  </div>
+
+  <!-- Changes -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">🔄</div>
+      <h2>Changes to This Policy</h2>
+    </div>
+    <p>This Privacy Policy may be updated from time to time. Any changes will be reflected on this page. Your continued use of the Application constitutes acceptance of the updated policy. We recommend reviewing this page regularly.</p>
+  </div>
+
+  <!-- Your Consent -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">✅</div>
+      <h2>Your Consent</h2>
+    </div>
+    <p>By using the Application, you consent to the processing of your information as described in this Privacy Policy, including any future amendments.</p>
+  </div>
+
+  <!-- Contact -->
+  <div class="card contact-card">
+    <div class="card-header">
+      <div class="card-icon">✉️</div>
+      <h2>Contact Us</h2>
+    </div>
+    <p>If you have any questions about this Privacy Policy or our data practices, please reach out:</p>
+    <p><a href="mailto:Fire21Lavas8@gmail.com">Fire21Lavas8@gmail.com</a></p>
+  </div>
+</main>
+
+<footer>
+  &copy; 2026 Snow Day. All rights reserved.
+</footer>
+
+<script>
+  // Snowfall animation
+  const canvas = document.getElementById('snow-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, flakes = [];
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function createFlake() {
+    return {
+      x: Math.random() * W,
+      y: Math.random() * H - H,
+      r: Math.random() * 4 + 1,
+      speed: Math.random() * 1.2 + 0.4,
+      drift: Math.random() * 0.6 - 0.3,
+      opacity: Math.random() * 0.5 + 0.2
+    };
+  }
+
+  function init() {
+    resize();
+    flakes = Array.from({ length: 120 }, createFlake);
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    flakes.forEach(f => {
+      ctx.beginPath();
+      ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(180,210,240,${f.opacity})`;
+      ctx.fill();
+      f.y += f.speed;
+      f.x += f.drift;
+      if (f.y > H + 10) { Object.assign(f, createFlake(), { y: -10 }); }
+      if (f.x > W + 10) f.x = -10;
+      if (f.x < -10)    f.x = W + 10;
+    });
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  init();
+  draw();
+</script>
+</body>
+</html>
