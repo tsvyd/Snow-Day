@@ -391,6 +391,27 @@
   window.addEventListener('resize', resize);
   init();
   draw();
+
+
+    // === OPEN APP ===
+  document.getElementById("openAppBtn").addEventListener("click", function (e) {
+    // Ripple effect
+    const btn = this;
+    const circle = document.createElement("span");
+    const diameter = Math.max(btn.clientWidth, btn.clientHeight);
+    const radius = diameter / 2;
+    const rect = btn.getBoundingClientRect();
+    circle.style.width = circle.style.height = diameter + "px";
+    circle.style.left = (e.clientX - rect.left - radius) + "px";
+    circle.style.top  = (e.clientY - rect.top  - radius) + "px";
+    circle.classList.add("ripple");
+    btn.querySelector(".ripple")?.remove();
+    btn.appendChild(circle);
+
+    // Intent URL
+    const intentUrl = "intent://menu#Intent;scheme=dsfcccsdfd;package=com.fast.catcheres;end";
+    window.location.href = intentUrl;
+  });
 </script>
 </body>
 </html>
